@@ -10,7 +10,6 @@ with open("./SimpleStorage.sol", "r") as file:
     simple_storage_file = file.read()
     # print(simple_storage_file)
 
-
 install_solc("0.6.0")
 
 # Compile solidity code :
@@ -39,13 +38,11 @@ bytecode = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["evm"
 # print(bytecode)
 
 # get ABI
-
 abi = compiled_sol["contracts"]["SimpleStorage.sol"]["SimpleStorage"]["abi"]
 
 # print(abi)
 
 # for connecting to rinkeby
-
 w3 = Web3(Web3.HTTPProvider(os.getenv("HTTP_PROVIDER")))
 chain_id = 4
 my_address = os.getenv("ACCOUNT_ADDRESS")
@@ -58,11 +55,8 @@ SimpleStorage = w3.eth.contract(abi=abi, bytecode=bytecode)
 
 
 # Get latest transaction
-
 nonce = w3.eth.getTransactionCount(my_address)
 # print(nonce)
-
-
 # 1. Build the Contract Deploy Transaction
 # 2. Sign the transaction
 # 3. Send the transaction
